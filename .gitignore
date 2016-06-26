@@ -1,2 +1,4 @@
 example/bundle.js
+example/config.local.js
+lib/
 node_modules

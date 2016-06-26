@@ -1,8 +1,10 @@
-const AVUXI_CALLBACK = 'avapilLoaded'
-const AVUXI_SCRIPT_ID = 'vxscript'
-const AVUXI_URL = 'https://m.avuxiapis.com/av/'
-const AVUXI_LOCALES = ['en', 'de']
-const DEFAULT_LOCALE = 'en'
+const DEFAULT_OPTIONS = {
+  availableLocales: ['en', 'de'],
+  callback: 'avapilLoaded',
+  locale: 'en',
+  scriptId: 'vxscript',
+  url: 'https://m.avuxiapis.com/av'
+}
 
 const injectScriptTagToBody = ({ isAsync, id, src, type }) => {
   const script = document.createElement('script')
@@ -15,23 +17,32 @@ const injectScriptTagToBody = ({ isAsync, id, src, type }) => {
   document.body.appendChild(script)
 }
 
-export default (googleMap, locale, userId) => (new Promise((resolve) => {
-  const avuxiScriptTag = document.getElementById(AVUXI_SCRIPT_ID)
-  const widgetLocale = AVUXI_LOCALES.includes(locale) ? locale : DEFAULT_LOCALE
+export default (
+  userId,
+  googleMap,
+  options
+) => (
+  new Promise((resolve) => {
+    const avuxiOptions = Object.assign({}, DEFAULT_OPTIONS, options)
+    const { availableLocales, callback, locale, scriptId, url } = avuxiOptions
 
-  const createScriptTag = () => {
-    window[AVUXI_CALLBACK] = () => window.AVUXI.start(googleMap)
+    const avuxiScriptTag = document.getElementById(scriptId)
+    const avuxiLocale = availableLocales.includes(locale) ? locale : 'en'
 
-    injectScriptTagToBody({
-      isAsync: true,
-      id: AVUXI_SCRIPT_ID,
-      src: `${AVUXI_URL}/${userId}?callback=${AVUXI_CALLBACK}&ln=${widgetLocale}`
-    })
-  }
+    const createScriptTag = () => {
+      window[callback] = () => window.AVUXI.start(googleMap)
 
-  if (!avuxiScriptTag) {
-    createScriptTag()
-  }
+      injectScriptTagToBody({
+        isAsync: true,
+        id: scriptId,
+        src: `${url}/${userId}?callback=${callback}&ln=${avuxiLocale}`
+      })
+    }
 
-  resolve()
-}))
+    if (!avuxiScriptTag) {
+      createScriptTag()
+    }
+
+    resolve()
+  })
+)

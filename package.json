@@ -2,7 +2,13 @@
   "name": "avuxi-loader",
   "version": "0.0.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "babel -d lib index.js",
+    "example": "webpack-dev-server example",
+    "prepublish": "npm run build",
+    "test": "standard index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/agudulin/avuxi-loader.git"
@@ -13,13 +19,28 @@
     "url": "https://github.com/agudulin/avuxi-loader/issues"
   },
   "homepage": "https://github.com/agudulin/avuxi-loader#readme",
-  "browserify": {
-    "transform": [
-      "babelify"
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ],
+    "plugins": [
+      "transform-object-assign"
     ]
   },
   "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.0",
+    "file-loader": "^0.9.0",
     "google-map-react": "^0.15.0",
-    "react-fatigue-dev": "github:tj/react-fatigue-dev#49fec29"
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "standard": "^7.1.2",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }
