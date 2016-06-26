@@ -1,0 +1,15 @@
+:root {
+  box-sizing: border-box;
+  height: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+:root, body {
+  height: 100%;
+  margin: 0;
+}
+
+#content {
+  height: 100%;
+}

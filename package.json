@@ -1,0 +1,25 @@
+{
+  "name": "avuxi-loader",
+  "version": "0.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agudulin/avuxi-loader.git"
+  },
+  "author": "Alexander Gudulin <alexandr.gudulin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agudulin/avuxi-loader/issues"
+  },
+  "homepage": "https://github.com/agudulin/avuxi-loader#readme",
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "devDependencies": {
+    "google-map-react": "^0.15.0",
+    "react-fatigue-dev": "github:tj/react-fatigue-dev#49fec29"
+  }
+}
