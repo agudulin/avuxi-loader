@@ -4,10 +4,10 @@
   "description": "",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "babel -d lib index.js",
+    "build": "babel -d lib/ src/",
     "example": "webpack-dev-server example",
     "prepublish": "npm run build",
-    "test": "standard index.js"
+    "test": "standard"
   },
   "repository": {
     "type": "git",
