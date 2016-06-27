@@ -2,6 +2,7 @@
 
 **avuxi-loader** helps to load and initialize [avuxi](http://avuxi.com) library.
 
+[![npm](https://img.shields.io/npm/v/avuxi-loader.svg?style=flat-square)](https://www.npmjs.com/package/avuxi-loader)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-lightgrey.svg?style=flat-square)](http://standardjs.com/)
 [![Developed at Wimdu](https://img.shields.io/badge/developed%20at-Wimdu-orange.svg?style=flat-square)](http://tech.wimdu.com/)
 
