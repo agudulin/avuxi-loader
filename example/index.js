@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import GoogleMap from 'google-map-react'
 
-import avuxi from '../index'
+import avuxi from '../src'
 import { AVUXI_API_KEY, GOOGLE_API_KEY } from './config.local'
 
 class Map extends Component {
