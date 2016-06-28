@@ -24,6 +24,13 @@ const injectScriptTagToBody = ({ isAsync, id, src, type }) => {
   document.body.appendChild(script)
 }
 
+const waitForAvuxiCreatesContainer = (callback) => {
+  const container = document.getElementById('vxm')
+  if (container) return callback(container)
+
+  window.requestAnimationFrame(() => waitForAvuxiCreatesContainer(callback))
+}
+
 export default (
   userId,
   googleMap,
@@ -38,7 +45,10 @@ export default (
     const avuxiType = Object.keys(AREA_TYPES).map((k) => AREA_TYPES[k]).includes(type) ? type : AREA_TYPES.sightseeing
 
     const createScriptTag = () => {
-      window[callback] = () => window.AVUXI.start(googleMap, { type: avuxiType })
+      window[callback] = () => {
+        window.AVUXI.start(googleMap, { type: avuxiType })
+        waitForAvuxiCreatesContainer((container) => resolve(container))
+      }
 
       injectScriptTagToBody({
         isAsync: true,
@@ -47,10 +57,6 @@ export default (
       })
     }
 
-    if (!avuxiScriptTag) {
-      createScriptTag()
-    }
-
-    resolve()
+    if (!avuxiScriptTag) createScriptTag()
   })
 )
