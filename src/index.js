@@ -1,8 +1,15 @@
+const AREA_TYPES = {
+  sightseeing: 'sights',
+  eating: 'eating',
+  shopping: 'shopping',
+  nightlife: 'partying'
+}
 const DEFAULT_OPTIONS = {
   availableLocales: ['en', 'de'],
   callback: 'avapilLoaded',
   locale: 'en',
   scriptId: 'vxscript',
+  type: AREA_TYPES.sightseeing,
   url: 'https://m.avuxiapis.com/av'
 }
 
@@ -24,13 +31,14 @@ export default (
 ) => (
   new Promise((resolve) => {
     const avuxiOptions = Object.assign({}, DEFAULT_OPTIONS, options)
-    const { availableLocales, callback, locale, scriptId, url } = avuxiOptions
+    const { availableLocales, callback, locale, scriptId, type, url } = avuxiOptions
 
     const avuxiScriptTag = document.getElementById(scriptId)
     const avuxiLocale = availableLocales.includes(locale) ? locale : 'en'
+    const avuxiType = Object.keys(AREA_TYPES).map((k) => AREA_TYPES[k]).includes(type) ? type : AREA_TYPES.sightseeing
 
     const createScriptTag = () => {
-      window[callback] = () => window.AVUXI.start(googleMap)
+      window[callback] = () => window.AVUXI.start(googleMap, { type: avuxiType })
 
       injectScriptTagToBody({
         isAsync: true,

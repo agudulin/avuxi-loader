@@ -37,6 +37,7 @@ onGoogleApiLoaded (googleMapInstance) {
     callback: 'avapilLoaded',
     locale: 'en',
     scriptId: 'vxscript',
+    type: 'sights', // one from ['sights', 'eating', 'shopping', 'partying']
     url: 'https://m.avuxiapis.com/av'
   }
   ```
