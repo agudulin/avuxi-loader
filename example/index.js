@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import GoogleMap from 'google-map-react'
 
 import avuxi from '../src'
-import { AVUXI_API_KEY, GOOGLE_API_KEY } from './config.local'
+import { AVUXI_USER_ID, GOOGLE_API_KEY } from './config.local'
 
 class Map extends Component {
   constructor (props) {
@@ -13,7 +13,7 @@ class Map extends Component {
   }
 
   onGoogleApiLoaded ({ map, maps }) {
-    avuxi(AVUXI_API_KEY, map)
+    avuxi(AVUXI_USER_ID, map)
   }
 
   render () {

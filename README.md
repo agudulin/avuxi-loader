@@ -18,7 +18,7 @@ npm install --save avuxi-loader
 import avuxi from 'avuxi-loader'
 
 onGoogleApiLoaded (googleMapInstance) {
-  avuxi('AVUXI_API_KEY', googleMapInstance)
+  avuxi('AVUXI_USER_ID', googleMapInstance)
 }
 ```
 
@@ -47,7 +47,7 @@ onGoogleApiLoaded (googleMapInstance) {
   1. Create a file `./example/config.local.js` with your API keys
 
   ```js
-  export const AVUXI_API_KEY = 'your-api-key-from-avuxi-dashboard'
+  export const AVUXI_USER_ID = 'your-id-from-avuxi-dashboard'
   export const GOOGLE_API_KEY = 'your-api-key-from-google-dashboard'
   ```
 
