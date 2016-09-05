@@ -1,7 +1,10 @@
 {
   "name": "avuxi-loader",
   "version": "0.2.0",
-  "description": "",
+  "description": "Helps to load and initialize avuxi library",
+  "keywords": [
+    "avuxi"
+  ],
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel -d lib/ src/",
